@@ -6,7 +6,8 @@
         <Icon 
           name="mdi:account-circle" 
           class="w-full h-full text-neo-black"
-          aria-hidden="true"
+          :aria-label="$t('profile.imageAlt')"
+          role="img"
         />
       </div>
     </div>

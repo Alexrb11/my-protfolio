@@ -14,9 +14,10 @@
       <button
         @click="handleClear"
         class="text-neo-black hover:text-neo-secondary transition-colors"
-        aria-label="Clear terminal"
+        :aria-label="$t('aria.clearTerminal')"
+        type="button"
       >
-        <X :size="18" />
+        <X :size="18" aria-hidden="true" />
       </button>
     </div>
 
@@ -101,7 +102,8 @@
             @click="executeQuickCommand(cmd)"
             :disabled="terminalStore.isExecuting"
             class="quick-cmd-btn disabled:opacity-50 disabled:cursor-not-allowed"
-            :aria-label="`Execute ${cmd} command`"
+            :aria-label="`${$t(`terminal.commands.${cmd}`)}`"
+            type="button"
           >
             {{ cmd }}
           </button>

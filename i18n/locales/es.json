@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Inicio - Alex Rubio Portfolio",
-    "description": "Portafolio personal de Alex Rubio - Desarrollador Full-Stack y QA"
+    "description": "Portafolio personal de Alex Rubio - Desarrollador Full-Stack y QA especializado en Vue.js, Nuxt 3, Node.js y testing. Experiencia en IoT y blockchain."
   },
   "header": {
     "name": "Alex Rubio",
@@ -16,7 +16,8 @@
       "github": "GITHUB",
       "linkedin": "LINKEDIN",
       "email": "EMAIL"
-    }
+    },
+    "imageAlt": "Foto de perfil de Alex Rubio"
   },
   "terminal": {
     "title": "bash - alex{'@'}portfolio",
@@ -81,6 +82,11 @@
     "error": "Error",
     "retry": "Reintentar",
     "close": "Cerrar"
+  },
+  "aria": {
+    "switchLanguage": "Cambiar idioma a {language}",
+    "clearTerminal": "Limpiar terminal",
+    "closeModal": "Cerrar modal"
   }
 }
 

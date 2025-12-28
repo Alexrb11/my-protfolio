@@ -6,7 +6,7 @@
         <h1 class="text-5xl font-bold font-sans mb-4 text-border">
           {{ $t('header.name') }}
         </h1>
-        <p class="text-xl font-mono text-border/70">
+        <p class="text-xl font-mono text-gray-700 dark:text-gray-300">
           {{ $t('header.role') }}
         </p>
       </div>
@@ -39,14 +39,41 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
-// Meta tags para la página de inicio con i18n
+// Meta tags para la página de inicio con i18n y SEO mejorado
 useHead({
   title: t('meta.title'),
+  htmlAttrs: {
+    lang: locale.value
+  },
   meta: [
     {
       name: 'description',
+      content: t('meta.description')
+    },
+    {
+      property: 'og:title',
+      content: t('meta.title')
+    },
+    {
+      property: 'og:description',
+      content: t('meta.description')
+    },
+    {
+      property: 'og:type',
+      content: 'website'
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image'
+    },
+    {
+      name: 'twitter:title',
+      content: t('meta.title')
+    },
+    {
+      name: 'twitter:description',
       content: t('meta.description')
     }
   ]

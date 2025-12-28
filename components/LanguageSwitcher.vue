@@ -8,9 +8,10 @@
         'lang-btn',
         { 'active': currentLocale === locale.code }
       ]"
-      :aria-label="`Switch to ${locale.name}`"
+      :aria-label="$t('aria.switchLanguage', { language: locale.name })"
+      :aria-pressed="currentLocale === locale.code"
     >
-      <span class="flag">{{ locale.flag }}</span>
+      <span class="flag" aria-hidden="true">{{ locale.flag }}</span>
       <span class="text">{{ locale.code.toUpperCase() }}</span>
     </button>
   </div>
