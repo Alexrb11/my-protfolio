@@ -4,10 +4,10 @@
       <!-- Header -->
       <div class="mb-8 text-center">
         <h1 class="text-5xl font-bold font-sans mb-4 text-border">
-          Alex Rubio
+          {{ $t('header.name') }}
         </h1>
         <p class="text-xl font-mono text-border/70">
-          Full-Stack Developer & QA
+          {{ $t('header.role') }}
         </p>
       </div>
 
@@ -39,9 +39,17 @@
 </template>
 
 <script setup lang="ts">
-// Meta tags para la página de inicio
+const { t } = useI18n()
+
+// Meta tags para la página de inicio con i18n
 useHead({
-  title: 'Inicio - Alex Rubio Portfolio'
+  title: t('meta.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('meta.description')
+    }
+  ]
 })
 </script>
 

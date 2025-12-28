@@ -13,7 +13,8 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/icon',
     '@nuxtjs/google-fonts',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@nuxtjs/i18n'
   ],
   
   // Configuración de Tailwind
@@ -26,6 +27,36 @@ export default defineNuxtConfig({
   content: {
     highlight: {
       theme: 'github-dark'
+    }
+  },
+  
+  // Configuración de i18n
+  i18n: {
+    vueI18n: './i18n.config.ts',
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        name: 'English',
+        file: 'en.json'
+      },
+      {
+        code: 'es',
+        iso: 'es-ES',
+        name: 'Español',
+        file: 'es.json'
+      }
+    ],
+    lazy: true,
+    langDir: 'locales',
+    defaultLocale: 'es',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+      alwaysRedirect: false,
+      fallbackLocale: 'es'
     }
   },
   

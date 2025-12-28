@@ -2,7 +2,7 @@
   <BentoCard :col-span="2" :row-span="1">
     <div class="p-4 md:p-6 overflow-hidden relative flex flex-col h-[500px] md:h-auto w-full">
       <h3 class="text-xs font-mono text-border/70 mb-3 uppercase tracking-wider md:mb-4">
-        Tech Stack
+        {{ $t('stack.title') }}
       </h3>
       
       <!-- Desktop: Horizontal -->

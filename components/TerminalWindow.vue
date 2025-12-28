@@ -9,7 +9,7 @@
           <div class="w-3 h-3 bg-neo-primary border border-neo-black"></div>
         </div>
         <Terminal :size="16" class="text-neo-black ml-2" />
-        <span class="font-mono text-sm font-bold text-neo-black">bash - alex@portfolio</span>
+        <span class="font-mono text-sm font-bold text-neo-black">{{ $t('terminal.title') }}</span>
       </div>
       <button
         @click="handleClear"
@@ -29,14 +29,14 @@
     >
       <!-- Welcome Message -->
       <div v-if="terminalStore.history.length === 0" class="text-neo-primary">
-        <pre class="whitespace-pre-wrap">╔═══════════════════════════════════════════════════════════════╗
-║                                                          ║
-║           Bienvenido al Portfolio de Alex Rubio         ║
-║                                                          ║
-║                 Full-Stack Developer & QA                ║
-║                                                          ║
-╚═══════════════════════════════════════════════════════════════╝</pre>
-        <p class="mt-4 text-neo-bg">Escribe 'help' para ver los comandos disponibles.</p>
+        <pre class="whitespace-pre-wrap">{{ $t('terminal.welcome.line1') }}
+{{ $t('terminal.welcome.line2') }}
+{{ $t('terminal.welcome.line3') }}
+{{ $t('terminal.welcome.line4') }}
+{{ $t('terminal.welcome.line5') }}
+{{ $t('terminal.welcome.line6') }}
+{{ $t('terminal.welcome.line7') }}</pre>
+        <p class="mt-4 text-neo-bg">{{ $t('terminal.welcome.hint') }}</p>
       </div>
 
       <!-- History -->
@@ -82,7 +82,7 @@
           type="text"
           :disabled="terminalStore.isExecuting"
           class="flex-1 bg-transparent text-neo-bg font-mono outline-none caret-neo-primary disabled:opacity-50 disabled:cursor-not-allowed"
-          placeholder="Escribe un comando..."
+          :placeholder="$t('terminal.placeholder')"
           autocomplete="off"
           spellcheck="false"
           @keydown.up.prevent="handleHistoryUp"
@@ -93,7 +93,7 @@
 
       <!-- Quick Commands -->
       <div class="border-t border-neo-bg/20 pt-3">
-        <p class="font-mono text-[10px] text-neo-bg/50 mb-2 uppercase tracking-wider">Comandos Rápidos:</p>
+        <p class="font-mono text-[10px] text-neo-bg/50 mb-2 uppercase tracking-wider">{{ $t('terminal.quickCommands') }}</p>
         <div class="flex flex-wrap gap-2">
           <button
             v-for="cmd in quickCommands"

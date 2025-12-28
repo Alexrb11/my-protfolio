@@ -13,13 +13,13 @@
 
     <!-- Name -->
     <h1 class="text-3xl font-bold font-mono text-neo-black mb-2 text-center tracking-tight">
-      ALEX RUBIO BRAVO
+      {{ $t('profile.name') }}
     </h1>
 
     <!-- Role -->
     <div class="bg-neo-black text-neo-bg px-4 py-2 mb-6">
       <p class="font-mono text-sm font-bold text-center">
-        FULL-STACK DEV & QA
+        {{ $t('profile.role') }}
       </p>
     </div>
 
@@ -27,11 +27,11 @@
     <div class="flex flex-col gap-2 mb-6 w-full">
       <div class="flex items-center gap-2 text-sm font-mono">
         <MapPin :size="16" class="text-neo-primary" />
-        <span class="text-neo-black">Salamanca, España</span>
+        <span class="text-neo-black">{{ $t('profile.location') }}</span>
       </div>
       <div class="flex items-center gap-2 text-sm font-mono">
         <Briefcase :size="16" class="text-neo-primary" />
-        <span class="text-neo-black">BISITE Research Group</span>
+        <span class="text-neo-black">{{ $t('profile.organization') }}</span>
       </div>
     </div>
 
@@ -45,7 +45,7 @@
         aria-label="GitHub Profile"
       >
         <Github :size="20" />
-        <span class="font-mono font-bold">GITHUB</span>
+        <span class="font-mono font-bold">{{ $t('profile.buttons.github') }}</span>
       </a>
       
       <a
@@ -56,7 +56,7 @@
         aria-label="LinkedIn Profile"
       >
         <Linkedin :size="20" />
-        <span class="font-mono font-bold">LINKEDIN</span>
+        <span class="font-mono font-bold">{{ $t('profile.buttons.linkedin') }}</span>
       </a>
       
       <a
@@ -65,7 +65,7 @@
         aria-label="Email Contact"
       >
         <Mail :size="20" />
-        <span class="font-mono font-bold">EMAIL</span>
+        <span class="font-mono font-bold">{{ $t('profile.buttons.email') }}</span>
       </a>
     </div>
   </div>

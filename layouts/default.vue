@@ -17,6 +17,8 @@
             Alex Rubio
           </NuxtLink>
 
+          <!-- Language Switcher -->
+          <LanguageSwitcher />
 
           <!-- Navigation Links -->
           <!-- <ul class="flex items-center gap-6 font-mono text-sm">

@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "Home - Alex Rubio Portfolio",
+    "description": "Personal portfolio of Alex Rubio - Full-Stack Developer & QA"
+  },
+  "header": {
+    "name": "Alex Rubio",
+    "role": "Full-Stack Developer & QA"
+  },
+  "profile": {
+    "name": "ALEX RUBIO BRAVO",
+    "role": "FULL-STACK DEV & QA",
+    "location": "Salamanca, Spain",
+    "organization": "BISITE Research Group",
+    "buttons": {
+      "github": "GITHUB",
+      "linkedin": "LINKEDIN",
+      "email": "EMAIL"
+    }
+  },
+  "terminal": {
+    "title": "bash - alex{'@'}portfolio",
+    "placeholder": "Type a command...",
+    "quickCommands": "Quick Commands:",
+    "welcome": {
+      "line1": "╔═══════════════════════════════════════════════════════════════╗",
+      "line2": "║                                                          ║",
+      "line3": "║           Welcome to Alex Rubio's Portfolio              ║",
+      "line4": "║                                                          ║",
+      "line5": "║                 Full-Stack Developer & QA                ║",
+      "line6": "║                                                          ║",
+      "line7": "╚═══════════════════════════════════════════════════════════════╝",
+      "hint": "Type 'help' to see available commands."
+    },
+    "commands": {
+      "about": "about me",
+      "stack": "technologies",
+      "experience": "experience",
+      "projects": "projects",
+      "contact": "contact",
+      "help": "help",
+      "clear": "clear"
+    },
+    "responses": {
+      "about": "Full-Stack Developer & QA\n\nI'm Alex Rubio, a full-stack developer and QA specialist with experience creating robust and scalable web solutions.\n\nSalamanca, Spain\nComputer Engineering Graduate\nBISITE Research Group\n\nI'm passionate about building modern applications with the latest technologies and ensuring their quality through thorough testing.",
+      "stack": "Tech Stack:\n\nFrontend:\n  • Vue.js & Nuxt 3\n  • React & Next.js\n  • TypeScript\n  • TailwindCSS\n\nBackend:\n  • Node.js & Express\n  • Python & FastAPI\n  • PostgreSQL & MongoDB\n  • Redis\n\nDevOps & Testing:\n  • Docker & Kubernetes\n  • CI/CD (GitHub Actions)",
+      "experience": "Experience:\n\n• Full-Stack Developer - BISITE Research Group\n  Development of IoT platforms and blockchain systems\n  2023 - Present\n\n• QA Engineer - Freelance\n  Automated testing and quality assurance\n  2022 - 2023\n\n• Junior Developer - Tech Startup\n  Web development with Vue.js and Node.js\n  2021 - 2022",
+      "projects": "Featured projects:\n\n1. IoT Platform with Blockchain\n   Stack: Vue 3, Solidity, IPFS\n   Decentralized marketplace for IoT data\n\n2. E-commerce with Nuxt 3\n   Stack: Nuxt 3, Stripe, Supabase\n   Modern and scalable online store\n\nVisit my GitHub to see more projects: github.com/Alexrb11",
+      "contact": "Contact:\n\n• Email: contact{'@'}lxr.es\n• LinkedIn: linkedin.com/in/alexrubiobravo\n• GitHub: github.com/Alexrb11\n\nFeel free to reach out for collaborations or inquiries.",
+      "help": "Available commands:\n\n  about       - Information about me\n  stack       - Technologies I use\n  experience  - My work experience\n  projects    - Featured projects\n  contact     - Contact information\n  clear       - Clear terminal\n  help        - Show this help\n\nYou can also use the quick buttons below the terminal.",
+      "clear": "Terminal cleared.",
+      "error": "Command not found: {command}\nType 'help' to see available commands."
+    }
+  },
+  "stack": {
+    "title": "Tech Stack",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "devops": "DevOps",
+      "database": "Databases"
+    }
+  },
+  "iot": {
+    "title": "IoT Simulation",
+    "temperature": "Temperature",
+    "humidity": "Humidity",
+    "status": {
+      "connected": "Connected",
+      "disconnected": "Disconnected"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "viewProject": "View Project",
+    "viewCode": "View Code",
+    "technologies": "Technologies"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "close": "Close"
+  }
+}
+
