@@ -46,11 +46,11 @@ export default defineNuxtConfig({
         name: 'Español',
         file: 'es.json'
       }
-    ],
-    lazy: true,
-    langDir: 'locales',
-    defaultLocale: 'es',
-    strategy: 'prefix_except_default',
+      ],
+      lazy: true,
+      langDir: 'locales',
+      defaultLocale: 'es',
+      strategy: 'prefix_except_default',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
