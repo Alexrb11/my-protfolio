@@ -18,6 +18,7 @@
 </template>
 
 <script setup lang="ts">
+import { nextTick } from 'vue'
 const { locale, locales, setLocale } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const router = useRouter()
@@ -38,11 +39,39 @@ const switchLanguage = async (code: string, event?: Event) => {
     event.preventDefault()
   }
   
+  // Guardar la posición de scroll actual antes del cambio
+  const scrollPosition = typeof window !== 'undefined' 
+    ? { x: window.scrollX, y: window.scrollY }
+    : { x: 0, y: 0 }
+  
   await setLocale(code)
   
   // Usar switchLocalePath para cambiar la ruta
   const path = switchLocalePath(code)
+  
+  // Cambiar de ruta sin hacer scroll automático
   await router.push(path)
+  
+  // Restaurar la posición de scroll después de que se complete la navegación
+  await nextTick()
+  
+  if (typeof window !== 'undefined') {
+    // Usar múltiples intentos para asegurar que el scroll se restaure correctamente
+    // ya que el cambio de idioma puede causar re-renderizados
+    const restoreScroll = () => {
+      window.scrollTo(scrollPosition.x, scrollPosition.y)
+    }
+    
+    // Intentar restaurar inmediatamente
+    restoreScroll()
+    
+    // Intentar de nuevo después de que el navegador procese el cambio
+    requestAnimationFrame(() => {
+      restoreScroll()
+      // Un último intento por si acaso
+      setTimeout(restoreScroll, 50)
+    })
+  }
   
   // Asegurarse de que ningún input tenga focus después del cambio de idioma
   if (typeof document !== 'undefined') {
