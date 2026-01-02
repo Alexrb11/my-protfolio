@@ -34,6 +34,13 @@
         </div>
       </div>
 
+      <!-- Projects List - Temporalmente comentado hasta tener proyectos -->
+      <!--
+      <div class="mt-8 w-full">
+        <ProjectsList />
+      </div>
+      -->
+
     </div>
   </div>
 </template>
@@ -42,11 +49,9 @@
 const { t, locale } = useI18n()
 
 // Meta tags para la página de inicio con i18n y SEO mejorado
+// useLocaleHead ya gestiona el atributo lang dinámicamente
 useHead({
   title: t('meta.title'),
-  htmlAttrs: {
-    lang: locale.value
-  },
   meta: [
     {
       name: 'description',

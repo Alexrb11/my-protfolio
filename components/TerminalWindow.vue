@@ -30,14 +30,20 @@
     >
       <!-- Welcome Message -->
       <div v-if="terminalStore.history.length === 0" class="text-neo-primary">
-        <pre class="whitespace-pre-wrap">{{ $t('terminal.welcome.line1') }}
+        <!-- Desktop: ASCII art completo -->
+        <pre class="hidden md:block whitespace-pre text-xs md:text-sm overflow-x-auto font-mono">{{ $t('terminal.welcome.line1') }}
 {{ $t('terminal.welcome.line2') }}
 {{ $t('terminal.welcome.line3') }}
 {{ $t('terminal.welcome.line4') }}
 {{ $t('terminal.welcome.line5') }}
 {{ $t('terminal.welcome.line6') }}
 {{ $t('terminal.welcome.line7') }}</pre>
-        <p class="mt-4 text-neo-bg">{{ $t('terminal.welcome.hint') }}</p>
+        <!-- Mobile: Versión simplificada sin caracteres de caja -->
+        <div class="md:hidden border-2 border-dashed border-neo-primary p-4 text-center">
+          <p class="text-neo-primary font-mono text-sm mb-2">{{ $t('header.name') }}</p>
+          <p class="text-neo-primary font-mono text-xs">{{ $t('header.role') }}</p>
+        </div>
+        <p class="mt-4 text-neo-bg text-xs md:text-sm font-mono">{{ $t('terminal.welcome.hint') }}</p>
       </div>
 
       <!-- History -->

@@ -5,16 +5,19 @@
 </template>
 
 <script setup lang="ts">
-// Meta tags globales
+const { t } = useI18n()
+
+// Usar useLocaleHead para gestionar dinámicamente el atributo lang y meta tags
+useLocaleHead({
+  addDirAttribute: true,
+  addSeoAttributes: true
+})
+
+// Meta tags globales básicos (viewport siempre necesario)
 useHead({
-  title: 'Alex Rubio - Portfolio 2025',
   meta: [
-    { name: 'description', content: 'Portfolio profesional de Alex Rubio - Desarrollador Frontend' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-  ],
-  htmlAttrs: {
-    lang: 'es'
-  }
+  ]
 })
 </script>
 

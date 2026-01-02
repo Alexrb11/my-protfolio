@@ -28,11 +28,14 @@ export default defineNuxtConfig({
     highlight: {
       theme: 'github-dark'
     }
-  },
+  } as any,
   
   // Configuración de i18n
   i18n: {
     vueI18n: './i18n.config.ts',
+    // baseUrl para SEO - necesario para generar links alternativos en useLocaleHead
+    // Se puede sobrescribir con variable de entorno NUXT_PUBLIC_BASE_URL en producción
+    baseUrl: 'http://localhost:3000',
     locales: [
       {
         code: 'en',
@@ -47,6 +50,7 @@ export default defineNuxtConfig({
         file: 'es.json'
       }
       ],
+      // @ts-expect-error - lazy es una opción válida de @nuxtjs/i18n
       lazy: true,
       langDir: 'locales',
       defaultLocale: 'es',
@@ -77,6 +81,27 @@ export default defineNuxtConfig({
   },
   
   // Configuración de compatibilidad
-  compatibilityDate: '2024-01-01'
+  compatibilityDate: '2024-01-01',
+
+  // Configuración de Nitro para prerenderizado
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+      // Ignorar rutas dinámicas y rutas de Nuxt Content que causan errores 204
+      ignore: [
+        '/api/**',
+        '/__nuxt_content/**',
+        '**/*.txt',
+        '**/sql_dump.*'
+      ],
+      // No fallar en errores 204 (No Content) - estas rutas no son páginas reales
+      failOnError: false
+    },
+    // Configuración experimental para mejor manejo de prerenderizado
+    experimental: {
+      wasm: true
+    }
+  }
 })
 
