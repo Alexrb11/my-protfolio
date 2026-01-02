@@ -14,21 +14,21 @@ const i18nHead = useLocaleHead()
 // Fusionamos las propiedades de i18nHead con nuestra configuración personalizada
 useHead({
   htmlAttrs: {
-    ...i18nHead.value.htmlAttrs
+    lang: i18nHead.value.htmlAttrs!.lang
   },
-  meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'apple-mobile-web-app-title', content: 'Alex Rubio' },
-    { charset: 'utf-8' },
-    ...(i18nHead.value.meta || [])
-  ],
   link: [
+    ...(i18nHead.value.link || []),
     { rel: 'icon', type: 'image/png', href: '/assets/icon/favicon-96x96.png', sizes: '96x96' },
     { rel: 'icon', type: 'image/svg+xml', href: '/assets/icon/favicon.svg' },
     { rel: 'shortcut icon', href: '/assets/icon/favicon.ico' },
     { rel: 'apple-touch-icon', sizes: '180x180', href: '/assets/icon/apple-touch-icon.png' },
-    { rel: 'manifest', href: '/assets/icon/site.webmanifest' },
-    ...(i18nHead.value.link || [])
+    { rel: 'manifest', href: '/assets/icon/site.webmanifest' }
+  ],
+  meta: [
+    ...(i18nHead.value.meta || []),
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'apple-mobile-web-app-title', content: 'Alex Rubio' },
+    { charset: 'utf-8' }
   ]
 })
 </script>
