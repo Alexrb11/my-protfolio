@@ -3,7 +3,7 @@
     <button
       v-for="locale in availableLocales"
       :key="locale.code"
-      @click="switchLanguage(locale.code)"
+      @click="switchLanguage(locale.code, $event)"
       :class="[
         'lang-btn',
         { 'active': currentLocale === locale.code }
@@ -31,12 +31,26 @@ const availableLocales = computed(() => {
   }))
 })
 
-const switchLanguage = async (code: string) => {
+const switchLanguage = async (code: string, event?: Event) => {
+  // Prevenir que el evento cause focus en otros elementos (especialmente en móvil)
+  if (event) {
+    event.stopPropagation()
+    event.preventDefault()
+  }
+  
   await setLocale(code)
   
   // Usar switchLocalePath para cambiar la ruta
   const path = switchLocalePath(code)
   await router.push(path)
+  
+  // Asegurarse de que ningún input tenga focus después del cambio de idioma
+  if (typeof document !== 'undefined') {
+    const activeElement = document.activeElement as HTMLElement
+    if (activeElement && activeElement.tagName === 'INPUT') {
+      activeElement.blur()
+    }
+  }
 }
 </script>
 

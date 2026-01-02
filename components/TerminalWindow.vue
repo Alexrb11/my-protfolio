@@ -27,6 +27,7 @@
       class="flex-1 overflow-y-auto p-4 space-y-2 font-mono text-sm"
       aria-live="polite"
       aria-atomic="false"
+      @click="handleTerminalClick"
     >
       <!-- Welcome Message -->
       <div v-if="terminalStore.history.length === 0" class="text-neo-primary">
@@ -94,6 +95,7 @@
           spellcheck="false"
           @keydown.up.prevent="handleHistoryUp"
           @keydown.down.prevent="handleHistoryDown"
+          @focus="() => {}"
           aria-label="Terminal command input"
         />
       </form>
@@ -205,19 +207,35 @@ const handleHistoryDown = () => {
   terminalStore.navigateHistory('down')
 }
 
-// Auto-focus input on mount
+// Detectar si es móvil
+const isMobile = ref(false)
+
+// Verificar si es móvil al montar
 onMounted(() => {
-  inputRef.value?.focus()
+  isMobile.value = globalThis.innerWidth < 768 || 'ontouchstart' in globalThis
+  
+  // Solo auto-enfocar en desktop, no en móvil
+  if (!isMobile.value) {
+    inputRef.value?.focus()
+  }
 })
 
-// Keep input focused
+// Keep input focused (solo en desktop)
 const keepFocus = () => {
-  inputRef.value?.focus()
+  // No enfocar automáticamente en móvil para evitar que aparezca el teclado
+  if (!isMobile.value) {
+    inputRef.value?.focus()
+  }
 }
 
-// Re-focus on click anywhere in terminal
-const handleTerminalClick = () => {
-  keepFocus()
+// Re-focus on click anywhere in terminal (solo en desktop)
+const handleTerminalClick = (event: MouseEvent) => {
+  // Solo enfocar si el click fue directamente en el contenedor de la terminal
+  // y no en un botón u otro elemento interactivo
+  const target = event.target as HTMLElement
+  if (target.tagName !== 'BUTTON' && target.tagName !== 'A' && !isMobile.value) {
+    keepFocus()
+  }
 }
 </script>
 
