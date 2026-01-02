@@ -123,10 +123,16 @@
   }
 }
 
-/* Pausar animación en hover para mejor UX */
-.marquee-container-horizontal:hover,
+/* Pausar animación en hover solo en desktop (horizontal) */
+@media (min-width: 768px) {
+  .marquee-container-horizontal:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* En móvil (vertical), la animación nunca se pausa, incluso con hover */
 .marquee-container-vertical:hover {
-  animation-play-state: paused;
+  /* No hacer nada - la animación continúa siempre en móvil */
 }
 </style>
 
