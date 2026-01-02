@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     vueI18n: './i18n.config.ts',
     // baseUrl para SEO - necesario para generar links alternativos en useLocaleHead
     // Se puede sobrescribir con variable de entorno NUXT_PUBLIC_BASE_URL en producción
-    baseUrl: 'http://localhost:3000',
+    baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'https://lxr.es',
     locales: [
       {
         code: 'en',

@@ -34,13 +34,6 @@
         </div>
       </div>
 
-      <!-- Projects List - Temporalmente comentado hasta tener proyectos -->
-      <!--
-      <div class="mt-8 w-full">
-        <ProjectsList />
-      </div>
-      -->
-
     </div>
   </div>
 </template>

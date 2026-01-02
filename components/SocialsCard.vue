@@ -6,11 +6,11 @@
       </h3>
       <div class="flex flex-col gap-4 w-full">
         <a
-          href="https://github.com"
+          href="https://github.com/Alexrb11"
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-center gap-3 p-4 bg-surface border-2 border-border shadow-neo-sm rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all duration-150 ease-out"
-          aria-label="Visitar perfil de GitHub"
+          :aria-label="$t('profile.buttons.github') + ' - ' + $t('profile.name')"
         >
           <Icon
             name="mdi:github"
@@ -20,11 +20,11 @@
           <span class="font-mono text-border font-semibold">GitHub</span>
         </a>
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/alexrubiobravo/"
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center justify-center gap-3 p-4 bg-surface border-2 border-border shadow-neo-sm rounded-none hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all duration-150 ease-out"
-          aria-label="Visitar perfil de LinkedIn"
+          :aria-label="$t('profile.buttons.linkedin') + ' - ' + $t('profile.name')"
         >
           <Icon
             name="mdi:linkedin"

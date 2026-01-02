@@ -80,11 +80,6 @@ export const useTerminalStore = defineStore('terminal', {
           content: t('terminal.responses.contact')
         }),
 
-        projects: () => ({
-          type: 'output',
-          content: t('terminal.responses.projects')
-        }),
-
         clear: () => {
           this.history = []
           return {
