@@ -127,6 +127,7 @@ import { Terminal, X } from 'lucide-vue-next'
 import { useTerminal } from '~/composables/useTerminal'
 
 const terminalStore = useTerminal()
+const { locale } = useI18n()
 
 const outputContainer = ref<HTMLElement | null>(null)
 const inputRef = ref<HTMLInputElement | null>(null)
@@ -180,6 +181,17 @@ watch(
       await nextTick()
       scrollToBottom()
     }
+  }
+)
+
+// Watch for locale changes to update terminal translations
+watch(
+  () => locale.value,
+  async () => {
+    // Actualizar traducciones del historial existente
+    terminalStore.updateTranslations()
+    await nextTick()
+    scrollToBottom()
   }
 )
 

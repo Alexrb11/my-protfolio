@@ -4,6 +4,7 @@ export interface TerminalEntry {
   type: 'command' | 'output' | 'error'
   content: string
   timestamp: number
+  command?: string // Comando que generó este output (para actualizar traducciones)
 }
 
 export const useTerminalStore = defineStore('terminal', {
@@ -16,11 +17,12 @@ export const useTerminalStore = defineStore('terminal', {
   }),
 
   actions: {
-    addEntry(type: TerminalEntry['type'], content: string) {
+    addEntry(type: TerminalEntry['type'], content: string, command?: string) {
       this.history.push({
         type,
         content,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        command
       })
     },
 
@@ -41,7 +43,8 @@ export const useTerminalStore = defineStore('terminal', {
       const [cmd] = trimmedCommand.toLowerCase().split(' ')
       
       const output = this.getCommandOutput(cmd)
-      this.addEntry(output.type, output.content)
+      // Guardar el comando para poder actualizar traducciones después
+      this.addEntry(output.type, output.content, cmd)
 
       // Limpiar input
       this.currentInput = ''
@@ -139,6 +142,28 @@ export const useTerminalStore = defineStore('terminal', {
 
     clearHistory() {
       this.history = []
+    },
+
+    // Actualizar traducciones del historial cuando cambia el idioma
+    updateTranslations() {
+      const { $i18n } = useNuxtApp()
+      const t = $i18n.t.bind($i18n)
+      
+      this.history.forEach((entry) => {
+        // Solo actualizar outputs que tienen un comando asociado
+        if (entry.type === 'output' && entry.command) {
+          const output = this.getCommandOutput(entry.command)
+          entry.content = output.content
+        } else if (entry.type === 'error') {
+          // Actualizar mensajes de error (buscar patrón en cualquier idioma)
+          const errorPattern = /(?:Comando no encontrado|Command not found):\s*(\w+)/
+          const match = errorPattern.exec(entry.content)
+          if (match && match[1]) {
+            const cmd = match[1]
+            entry.content = t('terminal.responses.error', { command: cmd })
+          }
+        }
+      })
     }
   }
 })
