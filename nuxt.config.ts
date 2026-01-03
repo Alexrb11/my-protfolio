@@ -33,9 +33,6 @@ export default defineNuxtConfig({
   // Configuración de i18n
   i18n: {
     vueI18n: './i18n.config.ts',
-    // baseUrl para SEO - se puede configurar con variable de entorno NUXT_PUBLIC_BASE_URL en producción
-    // Si no se define, useLocaleHead usará la URL actual del sitio
-    baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
     locales: [
       {
         code: 'en',

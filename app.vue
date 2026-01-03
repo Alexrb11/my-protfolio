@@ -5,19 +5,19 @@
 </template>
 
 <script setup lang="ts">
-// Usar useLocaleHead para gestionar dinámicamente el atributo lang y meta tags
-// Esto configura automáticamente el atributo lang del <html> según el locale actual
-// y genera los links hreflang para SEO multilingüe
-const i18nHead = useLocaleHead()
-
-// Meta tags globales básicos (viewport siempre necesario) y favicons
-// Fusionamos las propiedades de i18nHead con nuestra configuración personalizada
+// Capturamos la configuración de cabeceras generada por i18n
+const i18nHead = useLocaleHead({
+  addDirAttribute: true,
+  identifierAttribute: 'id'
+  // addSeoAttributes se omite porque es default en v8+
+} as any)
 useHead({
   htmlAttrs: {
-    lang: i18nHead.value.htmlAttrs!.lang
+    lang: i18nHead.value.htmlAttrs!.lang,
+    dir: i18nHead.value.htmlAttrs!.dir as 'ltr' | 'rtl' | 'auto' | undefined
   },
   link: [
-    ...(i18nHead.value.link || []),
+    ...(i18nHead.value.link || []), // Inyectamos los hreflang
     { rel: 'icon', type: 'image/png', href: '/assets/icon/favicon-96x96.png', sizes: '96x96' },
     { rel: 'icon', type: 'image/svg+xml', href: '/assets/icon/favicon.svg' },
     { rel: 'shortcut icon', href: '/assets/icon/favicon.ico' },
@@ -25,10 +25,9 @@ useHead({
     { rel: 'manifest', href: '/assets/icon/site.webmanifest' }
   ],
   meta: [
-    ...(i18nHead.value.meta || []),
+    ...(i18nHead.value.meta || []), // Inyectamos los meta tags de i18n
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'apple-mobile-web-app-title', content: 'Alex Rubio' },
-    { charset: 'utf-8' }
+    { name: 'apple-mobile-web-app-title', content: 'Alex Rubio' }
   ]
 })
 </script>
